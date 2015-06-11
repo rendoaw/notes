@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+#original source: http://jessenoller.com/blog/2009/02/05/ssh-programming-with-paramiko-completely-different
+
 import paramiko
 import cmd
 
