@@ -23,9 +23,11 @@ execute from vsphere or VMA: vicfg-vswitch --vihost <esxi host> --pg <portgroupn
 ```
 
 * clone VM
-** shutdown the VM that want to be cloned
-** copy the whole folder to a new folder
-** go to the new folder
-** modify vmx file
-*** change display name to a new name
-** register the VM (see above)
+```
+- shutdown the VM that want to be cloned
+- copy the whole folder to a new folder
+- go to the new folder
+-  modify vmx file
+    - change display name to a new name
+- register the VM (see above)
+```
