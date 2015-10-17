@@ -25,7 +25,7 @@ Domain ID ensures that an originated summary LSA arrives at the remote PE as a s
 * http://www.juniper.net/documentation/en_US/junos15.1/topics/example/vpn-ospf-domain-id-for-layer-3-configuring.html
 
 
-## Observation
+## Personal Observation
 * if vrf-target is being used at the prefix-advertiser PE, JunOS automatically include BGP extended attribute "domain-id:a.b.c.d:e" and "rte-type:<ospf area>:<lsa-type>"
   * config @ prefix-advertiser PE 
   
@@ -143,3 +143,5 @@ Domain ID ensures that an originated summary LSA arrives at the remote PE as a s
 
 
 * if vrf-export is being used at the prefix-advertiser PE, for some reason, the prefix-receiver PE is ignoring "domain-id:...." community and make it as LSA type 5.
+
+...to be continued...
