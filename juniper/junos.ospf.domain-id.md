@@ -51,43 +51,43 @@ Domain ID ensures that an originated summary LSA arrives at the remote PE as a s
 
   * config @ prefix-receiver PE
 
-  ```
-  lab@vmx-13-12# show routing-instances HP
-  instance-type vrf;
-  interface ge-0/0/0.936;
-  interface lo0.936;
-  route-distinguisher 67.176.255.2:7742;
-  inactive: vrf-import HP-import;
-  inactive: vrf-export HP-export;
-  vrf-target target:7041:7742;
-  protocols {
-      ospf {
-          export rw-redistribute-bgp-all;
-          area 0.0.3.6 {
-              interface all;
-          }
-      }
-  }
-  ```
+    ```
+    lab@vmx-13-12# show routing-instances HP
+    instance-type vrf;
+    interface ge-0/0/0.936;
+    interface lo0.936;
+    route-distinguisher 67.176.255.2:7742;
+    inactive: vrf-import HP-import;
+    inactive: vrf-export HP-export;
+    vrf-target target:7041:7742;
+    protocols {
+        ospf {
+            export rw-redistribute-bgp-all;
+            area 0.0.3.6 {
+                interface all;
+            }
+        }
+    }
+    ```
 
   * OSPF database @ prefix-receiver PE
 
-  ```
-  lab@vmx-13-12# run show ospf database instance HP
-  
-      OSPF database, Area 0.0.3.6
-   Type       ID               Adv Rtr           Seq      Age  Opt  Cksum  Len
-  Router  *77.4.0.2         77.4.0.2         0x80000002   564  0x22 0xba19  48
-  Summary *77.4.0.14        77.4.0.2         0x80000001   337  0xa2 0x7e8a  28
-      OSPF AS SCOPE link state database
-   Type       ID               Adv Rtr           Seq      Age  Opt  Cksum  Len
-  Extern  *77.4.0.4         77.4.0.2         0x80000001   952  0xa2 0x74a7  36
-  Extern  *77.4.4.0         77.4.0.2         0x80000002   341  0xa2 0x5cc1  36
-  Extern  *77.4.44.0        77.4.0.2         0x80000001   572  0xa2 0xb63d  36
-  Extern  *77.4.45.0        77.4.0.2         0x80000001   572  0xa2 0xab47  36
-  Extern  *77.4.46.0        77.4.0.2         0x80000001   572  0xa2 0xa051  36
-  Extern  *77.4.47.0        77.4.0.2         0x80000001   572  0xa2 0x955b  36
-  ```
+    ```
+    lab@vmx-13-12# run show ospf database instance HP
+    
+        OSPF database, Area 0.0.3.6
+     Type       ID               Adv Rtr           Seq      Age  Opt  Cksum  Len
+    Router  *77.4.0.2         77.4.0.2         0x80000002   564  0x22 0xba19  48
+    Summary *77.4.0.14        77.4.0.2         0x80000001   337  0xa2 0x7e8a  28
+        OSPF AS SCOPE link state database
+     Type       ID               Adv Rtr           Seq      Age  Opt  Cksum  Len
+    Extern  *77.4.0.4         77.4.0.2         0x80000001   952  0xa2 0x74a7  36
+    Extern  *77.4.4.0         77.4.0.2         0x80000002   341  0xa2 0x5cc1  36
+    Extern  *77.4.44.0        77.4.0.2         0x80000001   572  0xa2 0xb63d  36
+    Extern  *77.4.45.0        77.4.0.2         0x80000001   572  0xa2 0xab47  36
+    Extern  *77.4.46.0        77.4.0.2         0x80000001   572  0xa2 0xa051  36
+    Extern  *77.4.47.0        77.4.0.2         0x80000001   572  0xa2 0x955b  36
+    ```
 
   * BGP route @ prefix-receiver PE (see the line with Communities ... below)
 
