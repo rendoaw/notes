@@ -4,6 +4,7 @@
 ## Official version
 
 #### source:
+* http://www.juniper.net/techpubs/en_US/junos12.1/topics/usage-guidelines/vpns-configuring-routing-between-pe-and-ce-routers-in-layer-3-vpns.html
 * http://www.juniper.net/documentation/en_US/junos12.1/topics/usage-guidelines/routing-configuring-ospf-domain-ids-for-vpns.html
 
 This extended community ID can then be carried across the BGP VPN backbone. When the route is redistributed back as an OSPF or OSPFv3 route on the PE router and advertised to the CE near the destination, the domain ID identifies which domain the route originated from. The routing instance checks incoming routes for the domain ID. The route is then propagated as either a Type 3 LSA or Type 5 LSA.
