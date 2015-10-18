@@ -1,4 +1,7 @@
 
+
+source: https://www.juniper.net/techpubs/en_US/junos12.3/topics/concept/ospf-routing-external-metrics-overview.html
+
 When OSPF exports route information from external autonomous systems (ASs), it includes a cost, or external metric, in the route. OSPF supports two types of external metrics: Type 1 and Type 2. The difference between the two metrics is how OSPF calculates the cost of the route.
 
 Type 1 external metrics are equivalent to the link-state metric, where the cost is equal to the sum of the internal costs plus the external cost. This means that Type 1 external metrics include the external cost to the destination as well as the cost (metric) to reach the AS boundary router.
