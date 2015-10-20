@@ -1,4 +1,7 @@
 
+reference: http://www.juniper.net/documentation/en_US/junos13.2/topics/reference/configuration-statement/default-address-selection-edit-system.html
+
+
 ### base config
 
 * R6
