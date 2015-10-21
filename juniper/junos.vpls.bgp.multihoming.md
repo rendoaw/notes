@@ -1,5 +1,5 @@
 
-# Example of BGP-based VPLS with multihoming and othe stuff
+# Example of BGP-based VPLS with multihoming and other stuff
 
 ## Configuration
 
