@@ -587,49 +587,49 @@
             
     ```
     
-* How to find the active remote PE
+### How to find the active remote PE
 
-    * for local-site, as shown above, we know whether this PE is the active/master or not by checking the VC flag on the PE-CE interface
-    * for remote-site, based on the output below, we are trying to find which one is the active PE for site 2
-    * the following output shows that the remote CE MAC address is tied with __lsi.1048607__ interface
-    * by looking at the "show vpls connections instance VPLS3" output of PE14 above, we know that __lsi.1048607__ is going to PE11. This means, PE11 is the remote active PE.
-    * sample output:
+* for local-site, as shown above, we know whether this PE is the active/master or not by checking the VC flag on the PE-CE interface
+* for remote-site, based on the output below, we are trying to find which one is the active PE for site 2
+* the following output shows that the remote CE MAC address is tied with __lsi.1048607__ interface
+* by looking at the "show vpls connections instance VPLS3" output of PE14 above, we know that __lsi.1048607__ is going to PE11. This means, PE11 is the remote active PE.
+* sample output:
 
-        ```
-        rwibawa@vmx-13-14# run show vpls mac-table
-        
-        MAC flags       (S -static MAC, D -dynamic MAC, L -locally learned, C -Control MAC
-            O -OVSDB MAC, SE -Statistics enabled, NM -Non configured MAC, R -Remote PE MAC)
-        
-        Routing instance : VPLS3
-         Bridging domain : __VPLS3__, VLAN : 951
-           MAC                 MAC      Logical          NH     RTR
-           address             flags    interface        Index  ID
-           00:50:58:13:13:04   D        lsi.1048607
-           00:50:58:13:19:04   D        ge-0/0/0.949
-           
-           
-        rwibawa@vmx-13-14# run show vpls connections instance VPLS3
-        ...
-        
-        Instance: VPLS3
-        Edge protection: Not-Primary
-          Local site: 1 (1)
-            connection-site           Type  St     Time last up          # Up trans
-            1                         rmt   RN
-            2                         rmt   LB
-            11                        rmt   LB
-            12                        rmt   LB
-            17                        rmt   LB
-          Local site: 14 (14)
-            connection-site           Type  St     Time last up          # Up trans
-            1                         rmt   RN
-            2                         rmt   RB
-            11                        rmt   Up     Oct 21 01:14:04 2015           1
-              Remote PE: 67.176.255.1, Negotiated control-word: No
-              Incoming label: 262475, Outgoing label: 262518
-              Local interface: lsi.1048607, Status: Up, Encapsulation: VPLS     ---------------> lsi interface 
-                Description: Intf - vpls VPLS3 local site 14 remote site 11
-        ...
+    ```
+    rwibawa@vmx-13-14# run show vpls mac-table
+    
+    MAC flags       (S -static MAC, D -dynamic MAC, L -locally learned, C -Control MAC
+        O -OVSDB MAC, SE -Statistics enabled, NM -Non configured MAC, R -Remote PE MAC)
+    
+    Routing instance : VPLS3
+     Bridging domain : __VPLS3__, VLAN : 951
+       MAC                 MAC      Logical          NH     RTR
+       address             flags    interface        Index  ID
+       00:50:58:13:13:04   D        lsi.1048607
+       00:50:58:13:19:04   D        ge-0/0/0.949
+       
+       
+    rwibawa@vmx-13-14# run show vpls connections instance VPLS3
+    ...
+    
+    Instance: VPLS3
+    Edge protection: Not-Primary
+      Local site: 1 (1)
+        connection-site           Type  St     Time last up          # Up trans
+        1                         rmt   RN
+        2                         rmt   LB
+        11                        rmt   LB
+        12                        rmt   LB
+        17                        rmt   LB
+      Local site: 14 (14)
+        connection-site           Type  St     Time last up          # Up trans
+        1                         rmt   RN
+        2                         rmt   RB
+        11                        rmt   Up     Oct 21 01:14:04 2015           1
+          Remote PE: 67.176.255.1, Negotiated control-word: No
+          Incoming label: 262475, Outgoing label: 262518
+          Local interface: lsi.1048607, Status: Up, Encapsulation: VPLS     ---------------> lsi interface 
+            Description: Intf - vpls VPLS3 local site 14 remote site 11
+    ...
 
-```
+
