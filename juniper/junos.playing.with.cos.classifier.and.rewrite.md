@@ -10,6 +10,7 @@
 
 ### Base CoS Config
 
+```
 rwibawa@skynet_29# show class-of-service
 classifiers {
     dscp rw-dscp {
@@ -35,7 +36,7 @@ interfaces {
         }
     }
 }
-
+```
 
 ### Simple firewall filter to count transit traffic on next-hop router R2 and next-next-hop R3
 
