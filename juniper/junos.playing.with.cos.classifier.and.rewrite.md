@@ -380,9 +380,24 @@ unit 0 {
 
     * egress queue on R1
 
-```
+	```
+	rwibawa@skynet_29_01> show interfaces ge-1/0/2 detail | find "Egress queues"
+	  Egress queues: 8 supported, 4 in use
+	  Queue counters:       Queued packets  Transmitted packets      Dropped packets
+	    0                            36471                36471                    0
+	    1                                0                    0                    0
+	    2                                0                    0                    0
+	    3                            32712                32712                    0
+	
+	rwibawa@skynet_29_01> show interfaces ge-1/0/2 detail | find "Egress queues"
+	  Egress queues: 8 supported, 4 in use
+	  Queue counters:       Queued packets  Transmitted packets      Dropped packets
+	    0                            37471                37471                    0
+	    1                                0                    0                    0
+	    2                                0                    0                    0
+	    3                            32716                32716                    0
+	```
 
-```
     * seems traffic is correctly placed in BE queue in R1. This means dscp classifier works
 
     * lets add exp classifier into R2, to force EXP 7 from R1 to go to forwarding class BE at R2
@@ -400,6 +415,7 @@ unit 0 {
     * lets check egress queue on R2
 
         ```
+        rwibawa@skynet_29_02> show interfaces ge-1/0/4 detail | find "Egress queues"
         Egress queues: 8 supported, 4 in use
         Queue counters:       Queued packets  Transmitted packets      Dropped packets
             0                            22344                22344                    0
@@ -407,7 +423,7 @@ unit 0 {
             2                               31                   31                    0
             3                            38946                38946                    0
 
-        rwibawa@skynet_29> show interfaces ge-1/0/4 detail | find "Egress queues"
+        rwibawa@skynet_29_02> show interfaces ge-1/0/4 detail | find "Egress queues"
         Egress queues: 8 supported, 4 in use
         Queue counters:       Queued packets  Transmitted packets      Dropped packets
             0                            23346                23346                    0
@@ -421,7 +437,7 @@ unit 0 {
     * lets check egress queue on R3. Maybe default EXP rewrite automatically applied only if MPLS to MPLS forwarding.
 
         ```
-        rwibawa@skynet_29> show interfaces ge-1/0/6 detail | find "Egress queues"
+        rwibawa@skynet_29_03> show interfaces ge-1/0/6 detail | find "Egress queues"
         Egress queues: 8 supported, 4 in use
         Queue counters:       Queued packets  Transmitted packets      Dropped packets
             0                            22515                22515                    0
@@ -429,7 +445,7 @@ unit 0 {
             2                               31                   31                    0
             3                            39978                39978                    0
 
-        rwibawa@skynet_29> show interfaces ge-1/0/6 detail | find "Egress queues"
+        rwibawa@skynet_29_03> show interfaces ge-1/0/6 detail | find "Egress queues"
         Egress queues: 8 supported, 4 in use
         Queue counters:       Queued packets  Transmitted packets      Dropped packets
             0                            22515                22515                    0
@@ -459,7 +475,7 @@ unit 0 {
             * Note: This is the hardware that we have
 
                 ```
-                rwibawa@skynet_29# run show chassis hardware
+                rwibawa@skynet_29_01# run show chassis hardware
                 Hardware inventory:
                 Item             Version                   Description
                 Chassis                                    MX240
