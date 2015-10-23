@@ -120,7 +120,7 @@ rwibawa@ce01# run ping 94.0.0.2 tos 224 count 3
 
 ## Test scenario
 
-### Scenario 1
+### Scenario 1: custom dscp classifier, no mpls
 
 * see base config section above
 * dscp classfier rw-dscp @ R1 (ingress PE) to map dscp 111000 (56) and 110000 (48) to forwarding-class be
@@ -154,7 +154,7 @@ rwibawa@ce01# run ping 94.0.0.2 tos 224 count 3
 
 
 
-### Scenario 2
+### Scenario 2: custom dscp classifier, with MPLS in the backbone
 
 * exactly the same as scenario 1, except:
     * use MPLS in the backbone, between R1 upto R4
@@ -193,7 +193,7 @@ rwibawa@ce01# run ping 94.0.0.2 tos 224 count 3
         * Let's come back to this at the end of this post
 
 
-### Scenario 3
+### Scenario 3: custom dscp classifier, default dscp rewrite, with MPLS in the backbone
 
 * exactly the same as scenario 2, except:
     * use dscp default rewriter on R1 outgoing interface (backbone facing)
@@ -237,7 +237,7 @@ rwibawa@ce01# run ping 94.0.0.2 tos 224 count 3
 
 
 
-### Scenario 4
+### Scenario 4: custom dscp classifier, default dscp rewrite, NO MPLS 
 
 * similar to scenario 3, but now we are not using MPLS anymore. back to pure IP end to end.
 * run the ping command above
@@ -265,7 +265,7 @@ rwibawa@ce01# run ping 94.0.0.2 tos 224 count 3
     * on remote CE, the packet is received with dscp 0.
 
 
-### Scenario 5
+### Scenario 5: custom dscp classifier, default EXP rewrite, with MPLS in the backbone
 
 * Similar to Scenario 2, but now, we explicitly configure default EXP rewrite on R1 outgoing interface.
 * MPLS is used in the backbone
@@ -319,7 +319,7 @@ rwibawa@ce01# run ping 94.0.0.2 tos 224 count 3
     * on remote CE, the packet is received with original DSCP.
 
 
-### Scenario 6
+### Scenario 6: no BA classifier, no rewrite, firewall filter to reset DSCP
 
 * no BA classifier
 * no rewrite
@@ -372,7 +372,7 @@ unit 0 {
 
 
 
-## Revisit scenario 2
+## Revisit scenario 2: depeer look on EXP bit rewrite
 
 * we want to double check why default EXP rewrite is not applied automcatically.
 
