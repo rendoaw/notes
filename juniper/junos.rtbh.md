@@ -25,6 +25,13 @@
 
 ## Configuration
 
+### Topology
+
+```
+Customer ----- PE11 ----- { MPLS network } ----- PE17 ----- internet
+
+```
+
 ### Destination based RTBH
 
 * customer as the victim
