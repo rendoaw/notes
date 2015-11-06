@@ -2,6 +2,73 @@
 
 ... to be continued ...
 
+## JunOS example
+
+* BMP config
+
+    ```
+    rwibawa@vmx-13-11# show routing-options bmp
+    traceoptions {
+        file bmp.log size 10m;
+        flag all;
+    }
+    station ubuntu {
+        connection-mode active;
+        monitor enable;
+        station-address 172.25.153.74;
+        station-port 5555;
+        statistics-timeout 15;
+    }
+    ```
+
+* verify
+
+    ```
+    rwibawa@vmx-13-11# run show bgp bmp
+    Station name: ubuntu
+      Local address/port: -/-, Station address/port: 172.25.153.74/5555, active
+      State: established Local: 172.25.155.68+61304 Remote: 172.25.153.74+5555
+      Last state change: 26:24
+      Monitor BGP Peers: enabled
+      Route-monitoring: pre-policy
+      Hold-down: 600, flaps 3, period 300
+      Priority: low
+      Statistics timeout: 15
+      Version: 3
+      Trace options:  all
+      Trace file: /var/log/bmp.log size 10485760 files 10
+    ```
+
+* traceoption log
+
+    ```
+    rwibawa@vmx-13-11# run show log bmp.log
+    Nov  6 02:25:24 trace_on: Tracing to "/var/log/bmp.log" started
+    Nov  6 02:25:24.848772   Update: flags 0x40 code Origin(1): IGP
+    Nov  6 02:25:24.867097   Update: flags 0x40 code ASPath(2) length 18: 3420 18355.56 43738 18355.56
+    Nov  6 02:25:24.867107   Update: flags 0x40 code NextHop(3): 67.176.255.8
+    Nov  6 02:25:24.867111   Update: flags 0x40 code LocalPref(5): 100
+    Nov  6 02:25:24.867114   Update: flags 0xc0 code Communities(8): 7041:9002
+    Nov  6 02:25:24.867119   Update: flags 0x80 code Originator_Id(9) 67.176.255.8
+    Nov  6 02:25:24.867124   Update: flags 0x80 code Cluster_List(10): 67.176.255.103
+    Nov  6 02:25:24.867137   Update: 	106.232.0.0/18
+    Nov  6 02:25:24.867151 bmp_send_rm_msg called for pre-policy, peer 67.176.255.103 (Internal AS 16689.7041), station ubuntu
+    Nov  6 02:25:24.867157 bmp_send_rm_msg called, found pre-policy prefix 106.224.192.0/18, peer 67.176.255.103 (Internal AS 16689.7041), station ubuntu
+    Nov  6 02:25:24.867173 generating pre-policy add for prefix 106.224.192.0/18, peer 67.176.255.103 (Internal AS 16689.7041), station ubuntu
+    Nov  6 02:25:24.867182 BMP: type 0 (RM), len 135, ver 3, pre-policy, for Peer 67.176.255.103, station ubuntu
+    Nov  6 02:25:24.867193  Peer AS: 1093737345 Peer BGP Id: 67.176.255.103 Time: 1446028309:0 (Oct 28 10:31:49)
+    Nov  6 02:25:24.867198   Update: message type 2 (Update) length 87
+    Nov  6 02:25:24.867201   Update: Update PDU length 87
+    Nov  6 02:25:24.867204   Update: flags 0x40 code Origin(1): IGP
+    Nov  6 02:25:24.867211   Update: flags 0x40 code ASPath(2) length 18: 3420 35444.16739 21957 35444.16739
+    Nov  6 02:25:24.867216   Update: flags 0x40 code NextHop(3): 67.176.255.8
+    Nov  6 02:25:24.867219   Update: flags 0x40 code LocalPref(5): 100
+    Nov  6 02:25:24.867223   Update: flags 0xc0 code Communities(8): 7041:9002
+    Nov  6 02:25:24.867229   Update: flags 0x80 code Originator_Id(9) 67.176.255.8
+    Nov  6 02:25:24.867236   Update: flags 0x80 code Cluster_List(10): 67.176.255.103
+    Nov  6 02:25:24.867243   Update: 	106.224.192.0/18
+    ```
+
 ## Sample of OpenBMP collected data 
 
 * list of BGP peers
