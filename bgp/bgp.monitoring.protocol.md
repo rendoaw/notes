@@ -298,7 +298,24 @@ mysql> select * from ls_nodes where hash_id = "c0208c7c1c7c1f0a1b073d8799e61669"
     ```
 
 
+## BMP vs normal BGP Peering
 
+* In term of the information that we can collect from the BGP router
+
+    | BGP Peering                                           |   BMP                                 |
+    |-------------------------------------------------------|---------------------------------------|
+    | best path, or few best path with add-path configured  | all paths                             |
+    | always post policy                                    | configurable, pre or post-policy      |
+    | no peer/neighbor information                          | include neighbor and peer information |
+    | no bgp message/peer up-down statistics                | include statistics                    |
+
+
+* in term of what we can send to BGP router
+
+    | BGP Peering                                           |   BMP                                 |
+    |-------------------------------------------------------|---------------------------------------|
+    | we can send anything to influence routing             | none                                  |
+    | common practice for DDoS solution                     |                                       |
 
 
 
