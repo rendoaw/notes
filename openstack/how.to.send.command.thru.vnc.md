@@ -79,6 +79,6 @@ And here is the sample workflow
             vncserver_listen = 10.25.155.165
             ```
             
-    * If you don't like this approach, alternatively you can you may be able to use websockify to bridge/convert novnc to a standard socker
-        * please check https://github.com/kanaka/websockify
+    * If you don't like this approach, alternatively you can you may be able to find something to bridge/convert novnc to a standard socket or to send any command thru novnc
+        
 
