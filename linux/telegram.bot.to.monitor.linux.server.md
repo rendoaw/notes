@@ -36,6 +36,9 @@ The script will do the following
     * Only admin can send command. Verification is done by checking sender username, user id and a simple password.
     
     * Any message received by unknown sender will be ignored.
+    
+    * syntax: "<password> <any linux command">
+        * e.g: "mypassword ifconfig -a"
 
 
 * Periodically send "i am alive" message to admin.
