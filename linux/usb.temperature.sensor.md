@@ -5,40 +5,72 @@
 
 * software
 
-  ```
-  # wget -q http://dl.panticz.de/pcsensor/pcsensor -O /usr/local/bin/pcsensor
-  # chmod +x /usr/local/bin/pcsensor
-  ```
+    ```
+    # wget -q http://dl.panticz.de/pcsensor/pcsensor -O /usr/local/bin/pcsensor
+    # chmod +x /usr/local/bin/pcsensor
+    ```
 
 * sample output
 
-  ```
-  # /usr/local/bin/pcsensor
-  2016/07/23 19:57:07 Temperature 101.75F 38.75C
-  ```
+    ```
+    # /usr/local/bin/pcsensor
+    2016/07/23 19:57:07 Temperature 101.75F 38.75C
+    ```
 
 * as comparison, here is the internal CPU temperature
 
-  ```
-  # sensors
-  coretemp-isa-0000
-  Adapter: ISA adapter
-  Core 0:       +38.0°C  (high = +80.0°C, crit = +96.0°C)
-  Core 1:       +42.0°C  (high = +80.0°C, crit = +96.0°C)
-  Core 2:       +33.0°C  (high = +80.0°C, crit = +96.0°C)
-  Core 8:       +39.0°C  (high = +80.0°C, crit = +96.0°C)
-  Core 9:       +41.0°C  (high = +80.0°C, crit = +96.0°C)
-  Core 10:      +40.0°C  (high = +80.0°C, crit = +96.0°C)
-  
-  coretemp-isa-0001
-  Adapter: ISA adapter
-  Core 0:       +34.0°C  (high = +80.0°C, crit = +96.0°C)
-  Core 1:       +37.0°C  (high = +80.0°C, crit = +96.0°C)
-  Core 2:       +32.0°C  (high = +80.0°C, crit = +96.0°C)
-  Core 8:       +30.0°C  (high = +80.0°C, crit = +96.0°C)
-  Core 9:       +36.0°C  (high = +80.0°C, crit = +96.0°C)
-  Core 10:      +34.0°C  (high = +80.0°C, crit = +96.0°C)
-  ```
+    ```
+    # sensors
+    coretemp-isa-0000
+    Adapter: ISA adapter
+    Core 0:       +38.0°C  (high = +80.0°C, crit = +96.0°C)
+    Core 1:       +42.0°C  (high = +80.0°C, crit = +96.0°C)
+    Core 2:       +33.0°C  (high = +80.0°C, crit = +96.0°C)
+    Core 8:       +39.0°C  (high = +80.0°C, crit = +96.0°C)
+    Core 9:       +41.0°C  (high = +80.0°C, crit = +96.0°C)
+    Core 10:      +40.0°C  (high = +80.0°C, crit = +96.0°C)
+    
+    coretemp-isa-0001
+    Adapter: ISA adapter
+    Core 0:       +34.0°C  (high = +80.0°C, crit = +96.0°C)
+    Core 1:       +37.0°C  (high = +80.0°C, crit = +96.0°C)
+    Core 2:       +32.0°C  (high = +80.0°C, crit = +96.0°C)
+    Core 8:       +30.0°C  (high = +80.0°C, crit = +96.0°C)
+    Core 9:       +36.0°C  (high = +80.0°C, crit = +96.0°C)
+    Core 10:      +34.0°C  (high = +80.0°C, crit = +96.0°C)
+    ```
+
+
+* Simple alert/monitorig script
+
+    ```
+    # cat check_temperature.sh
+    #!/bin/bash
+    
+    i=`/usr/local/bin/pcsensor | awk '{print $5}' | sed 's/C//'`
+    echo $i;
+    int=${i%.*}
+    if [ $int -gt 35 ]; then
+     /usr/local/bin/pcsensor | mail -r sender@domain.net  -s "Room Temperature Alert" recepient@domain.com
+    fi
+    
+    for i in `sensors -u | grep _input | awk '{print $2}'`; do
+     echo $i;
+     int=${i%.*}
+     if [ $int -gt 50 ]; then
+         sensors | mail -r sender@domain.net  -s "Server CPU Temperature Alert" recepient@domain.com
+         exit 1
+     fi
+    done
+
+ 
+    # cat /etc/crontab
+    ...deleted...
+    # m h dom mon dow user	command
+    */15 *	* * *	root    /home/users/check_temperature.sh
+    ...deleted...
+    ```
+
 
 * lsub result
 
