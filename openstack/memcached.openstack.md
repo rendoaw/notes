@@ -206,3 +206,9 @@
     |-----------------------+---------+-------------------------------------------|
     
     ```
+
+* useful links 
+    * https://github.com/memcached/memcached/blob/master/doc/protocol.txt
+    * http://work.tinou.com/2011/04/memcached-for-dummies.html   
+    * https://blog.engineyard.com/2015/fine-tuning-memcached
+    * https://skuicloud.wordpress.com/2014/11/15/openstack-memcached-for-keystone/
