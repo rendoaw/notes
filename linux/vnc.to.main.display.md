@@ -3,9 +3,9 @@ To use vnc with linux desktop main display (display :0), use x11vnc
 
 * install
 
-    '''
+    ```
     apt-get install x11vnc
-    '''
+    ```
 
 
 * setup vnc password
