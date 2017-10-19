@@ -1,4 +1,4 @@
-  
+```  
 
 Download Calico YAML file
 wget https://docs.projectcalico.org/v2.6/getting-started/kubernetes/installation/hosted/kubeadm/1.6/calico.yaml
@@ -466,3 +466,22 @@ Successfully created 1 'ipPool' resource(s)
 / #
 
 
+ubuntu@ubuntu-4:~$ cat pod1.yaml
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    "cni.projectcalico.org/ipv4pools": "[\"10.91.1.0/24\"]"
+  name: ssh-server
+  labels:
+    app: sshd
+spec:
+  containers:
+    - name: ssh-server-container
+      image: "rastasheep/ubuntu-sshd:16.04"
+
+ubuntu@ubuntu-4:~$ kubectl create -f pod1.yaml
+pod "ssh-server" created
+
+```
