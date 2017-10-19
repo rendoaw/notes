@@ -417,3 +417,52 @@ kubectl delete node ubuntu-3
 kubectl drain ubuntu-2 --delete-local-data --force --ignore-daemonsets
 kubectl delete node ubuntu-2
   
+
+ubuntu@ubuntu-4:~$ sudo docker exec -it ca4c48f14c8e  /bin/busybox sh
+~ # ls -al
+total 16
+drwx------    2 root     root          4096 Oct 19 19:47 .
+drwxr-xr-x   35 root     root          4096 Oct 19 19:47 ..
+-rw-------    1 root     root             7 Oct 19 19:47 .ash_history
+-rw-r--r--    1 root     root           215 Sep 29 04:04 .wget-hsts
+~ #
+
+
+/ # cat >> ippool.yaml <<
+sh: syntax error: unexpected newline
+/ # cat >> ippool.yaml << EOF
+> - apiVersion: v1
+>   kind: ipPool
+>   metadata:
+>     cidr: 10.91.1.0/24
+>   spec:
+>     ipip:
+>       enabled: true
+>       mode: always
+>     nat-outgoing: false
+> EOF
+
+
+/ # /calicoctl create -f ippool.yaml
+Successfully created 1 'ipPool' resource(s)
+/ # /calicoctl get -o yaml ippool
+- apiVersion: v1
+  kind: ipPool
+  metadata:
+    cidr: 10.201.0.0/24
+  spec:
+    ipip:
+      enabled: true
+      mode: always
+    nat-outgoing: true
+- apiVersion: v1
+  kind: ipPool
+  metadata:
+    cidr: 10.91.1.0/24
+  spec:
+    ipip:
+      enabled: true
+      mode: always
+/ #
+
+
