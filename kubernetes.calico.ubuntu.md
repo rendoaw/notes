@@ -484,4 +484,31 @@ spec:
 ubuntu@ubuntu-4:~$ kubectl create -f pod1.yaml
 pod "ssh-server" created
 
+
+
+
+ubuntu@ubuntu-4:~$ kubectl exec -ti -n kube-system calicoctl -- /bin/busybox sh
+~ # cat >> bgp.yaml << EOF
+> apiVersion: v1
+> kind: bgpPeer
+> metadata:
+>   peerIP: 100.64.1.1
+>   scope: global
+> spec:
+>   asNumber: 64500
+> EOF
+~ #
+~ #
+~ # calicoctl create -f bgp.yaml
+Successfully created 1 'bgpPeer' resource(s)
+~ # calicoctl get -o yaml bgppeer
+- apiVersion: v1
+  kind: bgpPeer
+  metadata:
+    peerIP: 100.64.1.1
+    scope: global
+  spec:
+    asNumber: 64500
+~ #
 ```
+
