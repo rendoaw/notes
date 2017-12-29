@@ -192,10 +192,37 @@ if __name__ == "__main__":
 ```
 
 
-## Optional Steps
+## Optional Steps 
 
-To make sure the script is started during power-on and auto-restarted if it crash for any reason, i am using supervisord to monitor the script.
-In general, i did the following:
+To make sure the script is started during power-on and auto-restarted if it crash for any reason. There are few options:
+
+### Using systemd
+
+* create service file
+
+   ```
+   $ cat /etc/systemd/system/serverbot.service
+   [Unit]
+   Description = telegram server bot
+   After = network.target
+
+   [Service]
+   ExecStart = /home/rendo/scripts/bot.py
+   Restart = always
+
+   [Install]
+   WantedBy = multi-user.target
+   ```
+
+* enable and start the bot
+
+   ```
+   # systemctl enable serverbot
+   # systemctl start serverbot
+   ```
+
+
+### Using Supervisord
 
 * Install supervisord
 
