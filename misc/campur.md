@@ -5,4 +5,3 @@
 
 * pymongo output has objectID, need to use custom jsonencoder
 
-* 
