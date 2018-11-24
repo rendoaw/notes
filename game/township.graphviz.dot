@@ -1,0 +1,208 @@
+# online visualization http://viz-js.com/
+
+digraph G {
+    rankdir=LR;
+
+    { rank=same; wheat; corn; carrot; sugarcane; tomato; strawberry; potato; pine_tree; cacao; cotton; rubber_tree; silk; }
+    { rank=same; cow_feed; chicken_feed; sheep_feed } 
+    { rank=same; sugar_cube; syrup; caramel; popcorn; corn_chip; granola; potato_chip } 
+    { rank=same; milk;egg; wol; paper; paper_towel; wallpaper } 
+
+	subgraph farm {
+		node [style=filled, color=yellow];
+		wheat; 
+		corn; 
+		carrot;
+		sugarcane;
+		tomato;
+		strawberry;
+		potato;
+		pine_tree;
+		cacao;
+		cotton;
+		rubber_tree;
+		silk;
+		label = "Farm";
+		color=blue
+	}
+
+    subgraph feed_mill {
+        label="Feed Mill";
+        cow_feed; chicken_feed; sheep_feed
+    }
+
+    subgraph sugar_factory {
+        label="Sugar Factory";
+        sugar_cube; syrup; caramel
+    }
+
+    subgraph snack_factory {
+        label="Snack Factory";
+        popcorn; corn_chip; granola; potato_chip
+    }
+
+    subgraph paper_factory {
+        label="Paper Factory";
+        paper; paper_towel; wallpaper
+    }
+
+    subgraph rubber_factory {
+        label="Rubber Factory";
+        rubber;
+    }
+
+    subgraph cow_shed {
+        label="Cow shed";
+        milk;
+    }
+
+    subgraph chicken_coop {
+        label="chicken coop";
+        egg;
+    }
+
+    subgraph sheep_farm {
+        label="Sheep farm";
+        wol;
+    }
+
+    subgraph dairy_factory {
+        label="Dairy factory";
+        cream; cheese; yogurt; butter
+    }
+
+    subgraph bakery {
+        label="Bakery";
+        bread; cookies; bagel; pizza; potato_bread
+    }
+
+    subgraph textile_factory {
+        label="Textile Factory";
+        yarn; cotton_fabric; silk_fabric 
+    }
+
+    subgraph tailor_shop {
+        label="Tailor Shop";
+        shirt; sweater; coat; hat
+    }
+
+    subgraph fast_food {
+        label="Fast Food Restaurant";
+        milkshake; cheeseburger; sandwich; french_fries
+    }
+
+    subgraph pastry_factory {
+        label="Pastry Factory";
+        muffin; brownie; cupcake
+    }
+
+    subgraph ice_cream_factory {
+        label="Ice Cream Factory";
+        ice_cream; popsicle; frozen_yogurt; eskimo_pie
+    }
+
+    wheat -> cow_feed[label="x2"];
+    wheat -> chicken_feed[label="x2"];
+    wheat -> granola[label="x2"];
+    wheat -> muffin[label="x3"];
+    wheat -> bread[label="x2"];
+    wheat -> cookies[label="x2"];
+    wheat -> bagel[label="x2"];
+    wheat -> pizza[label="x1"];
+    wheat -> potato_bread[label="x2"];
+    
+    corn -> cow_feed[label="x1"];
+    corn -> sheep_feed[label="x2"];
+    corn -> popcorn[label="x2"];
+    corn -> corn_chip[label="x3"];
+    
+    carrot -> chicken_feed[label="x1"];
+    carrot -> sheep_feed[label="x2"];
+
+    sugarcane -> sugarcube[label="x1"];
+    sugarcane -> syrup[label="x2"];
+    sugarcane -> caramel[label="x3"];
+    
+    strawberry -> milkshake[label="x1"];
+    strawberry -> sandwich[label="x1"];
+    strawberry -> popsicle[label="x2"];
+    strawberry -> granola[label="x2"];
+    
+    tomato -> cheeseburger[label="x1"];
+    tomato -> french_fries[label="x2"];
+    tomato -> pizza[label="x2"];
+    
+    potato -> french_fries[label="x2"];
+    potato -> potato_bread[label="x2"];
+    potato -> potato_chip[label="x2"];
+    
+    cacao -> brownie[label="x2"];
+    cacao -> eskimo_pie[label="x1"];
+    
+    pine_tree -> eskimo_pie[label="x1"];
+    pine_tree -> paper[label="x1"];
+    pine_tree -> paper_towel[label="x2"];
+    pine_tree -> wallpaper[label="x3"];
+    
+    cotton -> cotton_fabric[label="x2"];
+    
+    silk -> silk_fabric[label="x2"];
+    
+    rubber_tree -> rubber[label="x1"];
+
+    cow_feed -> milk[label=""];
+    chicken_feed -> egg [label=""];
+    sheep_feed -> wol[label="x"];
+    
+    sugar_cube -> muffin[label="x1"];
+    sugar_cube -> cupcake[label="x1"];
+    sugar_cube -> ice_cream[label="x1"];
+    sugar_cube -> popsicle[label="x1"];
+    sugar_cube -> bagel[label="x1"];
+
+    syrup -> brownie[label="x1"];
+    syrup -> eskimo_pie[label="x1"];
+    
+    rubber -> wallpaper[label="x1"];
+    
+    milk -> cream[label="x"];
+    milk -> cheese[label="x2"];
+    milk -> ice_cream[label="x1"];
+    milk -> butter[label="x3"];
+    milk -> yogurt[label="x4"];
+    milk -> milkshake[label="x2"];
+
+    egg -> muffin[label="x4"];
+    egg -> cupcake[label="x5"];
+    egg -> cookies[label="x4"];
+    egg -> bagel[label="x3"];
+    egg -> potato_bread[label="x4"];
+    
+    wol -> yarn[label="x2"];
+
+    cream -> french_fries[label="x1"];
+    cream -> ice_cream[label="x1"];
+    cream -> frozen_yogurt[label="x1"];
+    
+    cheese -> cheeseburger[label="x1"];
+    cheese -> pizza[label="x1"];
+    
+    butter -> sandwich[label="x1"];
+    butter -> brownie[label="x1"];
+    
+    yogurt -> frozen_yogurt[label="x1"];
+    
+    yarn -> sweater[label="x1"];
+    yarn -> coat[label="x1"];
+    
+    cotton_fabric -> shirt[label="x1"];
+    cotton_fabric -> coat[label="x1"];
+    cotton_fabric -> hat[label="x1"];
+    
+    silk_fabric -> hat[label="x1"];
+    
+    bread -> cheeseburger[label="x2"];
+    bread -> sandwich[label="x1"];
+
+}
+
