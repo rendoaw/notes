@@ -1,0 +1,497 @@
+{
+    "annotations": {},
+    "modules": {
+        "ietf-inet-types": [
+            "inet",
+            "urn:ietf:params:xml:ns:yang:ietf-inet-types"
+        ],
+        "ietf-interfaces": [
+            "if",
+            "urn:ietf:params:xml:ns:yang:ietf-interfaces"
+        ],
+        "ietf-ip": [
+            "ip",
+            "urn:ietf:params:xml:ns:yang:ietf-ip"
+        ],
+        "ietf-logical-network-element": [
+            "lne",
+            "urn:ietf:params:xml:ns:yang:ietf-logical-network-element"
+        ],
+        "ietf-network": [
+            "nw",
+            "urn:ietf:params:xml:ns:yang:ietf-network"
+        ],
+        "ietf-network-instance": [
+            "ni",
+            "urn:ietf:params:xml:ns:yang:ietf-network-instance"
+        ],
+        "ietf-network-state": [
+            "nw-s",
+            "urn:ietf:params:xml:ns:yang:ietf-network-state"
+        ],
+        "ietf-network-topology": [
+            "nt",
+            "urn:ietf:params:xml:ns:yang:ietf-network-topology"
+        ],
+        "ietf-network-topology-state": [
+            "nt-s",
+            "urn:ietf:params:xml:ns:yang:ietf-network-topology-state"
+        ],
+        "ietf-yang-schema-mount": [
+            "yangmnt",
+            "urn:ietf:params:xml:ns:yang:ietf-yang-schema-mount"
+        ],
+        "ietf-yang-types": [
+            "yang",
+            "urn:ietf:params:xml:ns:yang:ietf-yang-types"
+        ]
+    },
+    "tree": {
+        "ietf-logical-network-element:logical-network-elements": [
+            "container",
+            {
+                "logical-network-element": [
+                    "list",
+                    {
+                        "description": [
+                            "leaf",
+                            "string"
+                        ],
+                        "managed": [
+                            "leaf",
+                            "boolean"
+                        ],
+                        "name": [
+                            "leaf",
+                            "string"
+                        ],
+                        "root": [
+                            "container",
+                            {}
+                        ]
+                    },
+                    [
+                        [
+                            "ietf-logical-network-element",
+                            "name"
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "ietf-network-instance:network-instances": [
+            "container",
+            {
+                "network-instance": [
+                    "list",
+                    {
+                        "description": [
+                            "leaf",
+                            "string"
+                        ],
+                        "enabled": [
+                            "leaf",
+                            "boolean"
+                        ],
+                        "name": [
+                            "leaf",
+                            "string"
+                        ],
+                        "vrf-root": [
+                            "container",
+                            {}
+                        ],
+                        "vsi-root": [
+                            "container",
+                            {}
+                        ],
+                        "vv-root": [
+                            "container",
+                            {}
+                        ]
+                    },
+                    [
+                        [
+                            "ietf-network-instance",
+                            "name"
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "ietf-network-state:networks": [
+            "container",
+            {
+                "network": [
+                    "list",
+                    {
+                        "ietf-network-topology-state:link": [
+                            "list",
+                            {
+                                "destination": [
+                                    "container",
+                                    {
+                                        "dest-node": [
+                                            "leaf",
+                                            "string"
+                                        ],
+                                        "dest-tp": [
+                                            "leaf",
+                                            "string"
+                                        ]
+                                    }
+                                ],
+                                "link-id": [
+                                    "leaf",
+                                    "string"
+                                ],
+                                "source": [
+                                    "container",
+                                    {
+                                        "source-node": [
+                                            "leaf",
+                                            "string"
+                                        ],
+                                        "source-tp": [
+                                            "leaf",
+                                            "string"
+                                        ]
+                                    }
+                                ],
+                                "supporting-link": [
+                                    "list",
+                                    {
+                                        "link-ref": [
+                                            "leaf",
+                                            "string"
+                                        ],
+                                        "network-ref": [
+                                            "leaf",
+                                            "string"
+                                        ]
+                                    },
+                                    [
+                                        [
+                                            "ietf-network-topology-state",
+                                            "network-ref"
+                                        ],
+                                        [
+                                            "ietf-network-topology-state",
+                                            "link-ref"
+                                        ]
+                                    ]
+                                ]
+                            },
+                            [
+                                [
+                                    "ietf-network-topology-state",
+                                    "link-id"
+                                ]
+                            ]
+                        ],
+                        "network-id": [
+                            "leaf",
+                            "string"
+                        ],
+                        "network-types": [
+                            "container",
+                            {}
+                        ],
+                        "node": [
+                            "list",
+                            {
+                                "ietf-network-topology-state:termination-point": [
+                                    "list",
+                                    {
+                                        "supporting-termination-point": [
+                                            "list",
+                                            {
+                                                "network-ref": [
+                                                    "leaf",
+                                                    "string"
+                                                ],
+                                                "node-ref": [
+                                                    "leaf",
+                                                    "string"
+                                                ],
+                                                "tp-ref": [
+                                                    "leaf",
+                                                    "string"
+                                                ]
+                                            },
+                                            [
+                                                [
+                                                    "ietf-network-topology-state",
+                                                    "network-ref"
+                                                ],
+                                                [
+                                                    "ietf-network-topology-state",
+                                                    "node-ref"
+                                                ],
+                                                [
+                                                    "ietf-network-topology-state",
+                                                    "tp-ref"
+                                                ]
+                                            ]
+                                        ],
+                                        "tp-id": [
+                                            "leaf",
+                                            "string"
+                                        ]
+                                    },
+                                    [
+                                        [
+                                            "ietf-network-topology-state",
+                                            "tp-id"
+                                        ]
+                                    ]
+                                ],
+                                "node-id": [
+                                    "leaf",
+                                    "string"
+                                ],
+                                "supporting-node": [
+                                    "list",
+                                    {
+                                        "network-ref": [
+                                            "leaf",
+                                            "string"
+                                        ],
+                                        "node-ref": [
+                                            "leaf",
+                                            "string"
+                                        ]
+                                    },
+                                    [
+                                        [
+                                            "ietf-network-state",
+                                            "network-ref"
+                                        ],
+                                        [
+                                            "ietf-network-state",
+                                            "node-ref"
+                                        ]
+                                    ]
+                                ]
+                            },
+                            [
+                                [
+                                    "ietf-network-state",
+                                    "node-id"
+                                ]
+                            ]
+                        ],
+                        "supporting-network": [
+                            "list",
+                            {
+                                "network-ref": [
+                                    "leaf",
+                                    "string"
+                                ]
+                            },
+                            [
+                                [
+                                    "ietf-network-state",
+                                    "network-ref"
+                                ]
+                            ]
+                        ]
+                    },
+                    [
+                        [
+                            "ietf-network-state",
+                            "network-id"
+                        ]
+                    ]
+                ]
+            }
+        ],
+        "ietf-network:networks": [
+            "container",
+            {
+                "network": [
+                    "list",
+                    {
+                        "ietf-network-topology:link": [
+                            "list",
+                            {
+                                "destination": [
+                                    "container",
+                                    {
+                                        "dest-node": [
+                                            "leaf",
+                                            "string"
+                                        ],
+                                        "dest-tp": [
+                                            "leaf",
+                                            "string"
+                                        ]
+                                    }
+                                ],
+                                "link-id": [
+                                    "leaf",
+                                    "string"
+                                ],
+                                "source": [
+                                    "container",
+                                    {
+                                        "source-node": [
+                                            "leaf",
+                                            "string"
+                                        ],
+                                        "source-tp": [
+                                            "leaf",
+                                            "string"
+                                        ]
+                                    }
+                                ],
+                                "supporting-link": [
+                                    "list",
+                                    {
+                                        "link-ref": [
+                                            "leaf",
+                                            "string"
+                                        ],
+                                        "network-ref": [
+                                            "leaf",
+                                            "string"
+                                        ]
+                                    },
+                                    [
+                                        [
+                                            "ietf-network-topology",
+                                            "network-ref"
+                                        ],
+                                        [
+                                            "ietf-network-topology",
+                                            "link-ref"
+                                        ]
+                                    ]
+                                ]
+                            },
+                            [
+                                [
+                                    "ietf-network-topology",
+                                    "link-id"
+                                ]
+                            ]
+                        ],
+                        "network-id": [
+                            "leaf",
+                            "string"
+                        ],
+                        "network-types": [
+                            "container",
+                            {}
+                        ],
+                        "node": [
+                            "list",
+                            {
+                                "ietf-network-topology:termination-point": [
+                                    "list",
+                                    {
+                                        "supporting-termination-point": [
+                                            "list",
+                                            {
+                                                "network-ref": [
+                                                    "leaf",
+                                                    "string"
+                                                ],
+                                                "node-ref": [
+                                                    "leaf",
+                                                    "string"
+                                                ],
+                                                "tp-ref": [
+                                                    "leaf",
+                                                    "string"
+                                                ]
+                                            },
+                                            [
+                                                [
+                                                    "ietf-network-topology",
+                                                    "network-ref"
+                                                ],
+                                                [
+                                                    "ietf-network-topology",
+                                                    "node-ref"
+                                                ],
+                                                [
+                                                    "ietf-network-topology",
+                                                    "tp-ref"
+                                                ]
+                                            ]
+                                        ],
+                                        "tp-id": [
+                                            "leaf",
+                                            "string"
+                                        ]
+                                    },
+                                    [
+                                        [
+                                            "ietf-network-topology",
+                                            "tp-id"
+                                        ]
+                                    ]
+                                ],
+                                "node-id": [
+                                    "leaf",
+                                    "string"
+                                ],
+                                "supporting-node": [
+                                    "list",
+                                    {
+                                        "network-ref": [
+                                            "leaf",
+                                            "string"
+                                        ],
+                                        "node-ref": [
+                                            "leaf",
+                                            "string"
+                                        ]
+                                    },
+                                    [
+                                        [
+                                            "ietf-network",
+                                            "network-ref"
+                                        ],
+                                        [
+                                            "ietf-network",
+                                            "node-ref"
+                                        ]
+                                    ]
+                                ]
+                            },
+                            [
+                                [
+                                    "ietf-network",
+                                    "node-id"
+                                ]
+                            ]
+                        ],
+                        "supporting-network": [
+                            "list",
+                            {
+                                "network-ref": [
+                                    "leaf",
+                                    "string"
+                                ]
+                            },
+                            [
+                                [
+                                    "ietf-network",
+                                    "network-ref"
+                                ]
+                            ]
+                        ]
+                    },
+                    [
+                        [
+                            "ietf-network",
+                            "network-id"
+                        ]
+                    ]
+                ]
+            }
+        ]
+    }
+}
